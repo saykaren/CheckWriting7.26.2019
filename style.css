@@ -4,8 +4,45 @@ body{
   align-content: center;
 }
 
+.addressBox {
+  width: 30%;
+  font-size: .5rem;
+}
+
+#memo {
+  font-size: 1rem;
+}
+
 #root {
   display: flex;
   justify-content: center;
   margin: 2rem;
+  flex-direction: column;
+  border-style: double;
+  padding: 1rem;
+  background: #f4fef4;
 }
+
+#row1, #row2, #row3, #row4, #row5 {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px;
+}
+
+#row3 {
+  border-bottom: 1px solid black;
+}
+
+#row5 {
+  font-size: 1.5rem;
+}
+
+#signature {
+  font-family: Apple Chancery;
+  font-style: oblique;
+  padding-right: 55px;
+  border-bottom: 1px solid black;
+}
+/* #answer {
+  text-decoration: underline;
+} */
