@@ -47,6 +47,21 @@ const tensObject = {
   9: "ninety",
 };
 
+function checkMe(array, arrayNum){
+  if(array[arrayNum] !== "0" && (typeof(array[arrayNum]) !== "underfined")){
+    var results = true;
+  }else{
+    var results = false;
+  };
+  return results;
+};
+
+
+
+//////////////////testing above 
+
+
+
 //new check overall function
 function checkOverall(){
   var userDollar = document.getElementById("dollarInput").value;
@@ -78,29 +93,27 @@ function checkOverall(){
   
   //Convert to word tens and ones place
   function convertTensWord(){
-      //determines if 0
-      if(dollarReverseArray[1] !== "0" && (typeof(dollarReverseArray[1]) !== "undefined")){
-      //determine tens place first
-        if(dollarReverseArray[1] == 1){
-          var tensPlace = teenObject[dollarReverseArray[0]]; //"thirteen"
-          var tenOneString = `${tensPlace} `;
-        }else{
-          ///section where tens place is anything but 1....) should be empty
-          var onesPlace = onesObject[dollarReverseArray[0]];
-          var tensPlace = tensObject[dollarReverseArray[1]];
-          var tenOneString = `${tensPlace} ${onesPlace} `;
-        };
+    //determines if 0
+    if(checkMe(dollarReverseArray, 1)){
+      if(dollarReverseArray[1] == 1){
+        var tensPlace = teenObject[dollarReverseArray[0]]; //"thirteen"
+        var tenOneString = `${tensPlace} `;
       }else{
-        var tenOneString = "";
+        ///section where tens place is anything but 1....) should be empty
+        var onesPlace = onesObject[dollarReverseArray[0]];
+        var tensPlace = tensObject[dollarReverseArray[1]];
+        var tenOneString = `${tensPlace} ${onesPlace} `;
       };
-  
+    }else{
+      var tenOneString = "";
+    };
     return tenOneString;
   };
   
   //Converts to word hundreds[2] thousand[3] ten thousand[4] hundred thousand[5]
   function getHundredsBeyond(){
     //Hundreds place is [2]
-    if(dollarReverseArray[2] !== "0" && (typeof(dollarReverseArray[2]) !== "undefined")){
+    if(checkMe(dollarReverseArray, 2)){
       var hundredsPlace = onesObject[dollarReverseArray[2]];
       var hundredsPlaceString = `${hundredsPlace} hundred `;
     }else{
@@ -111,30 +124,31 @@ function checkOverall(){
   };
    
   function getThousands(){
+ 
     //Check ten thousand first to determine thousands place
-    if(dollarReverseArray[4] !== "0" && (typeof(dollarReverseArray[4]) !== "undefined")){
+    if(checkMe(dollarReverseArray, 4)){
       if(dollarReverseArray[4] == 1){
         var tenThousandPlace = teenObject[dollarReverseArray[3]]; 
         var tenThousandString = `${tenThousandPlace} thousand `;
         console.log(`ten object ${tenThousandString}`);
       }else{
-        if(dollarReverseArray[3] !== "0" && (typeof(dollarReverseArray[3]) !== "undefined")){
+        if(checkMe(dollarReverseArray, 3)){
           var thousandPlace = onesObject[dollarReverseArray[3]];
           var tenThousandPlace = tensObject[dollarReverseArray[4]];
           var tenThousandString= `${tenThousandPlace} ${thousandPlace} thousand `;
         }else{
-          var tenThousandString = "";
+          var tenThousandPlace = tensObject[dollarReverseArray[4]];
+          var tenThousandString= `${tenThousandPlace} thousand `;
         };
       };
     }else{
-      if(dollarReverseArray[3] !== "0" && (typeof(dollarReverseArray[3]) !== "undefined")){
+      if(checkMe(dollarReverseArray, 3)){
         var thousandPlace = onesObject[dollarReverseArray[3]];
         var tenThousandString = `${thousandPlace} thousand ` 
       }else{
         var tenThousandString = "";
       };
     };
-  
     //Hundreds thousands place is [4]  
     if(dollarReverseArray[5] !== "0" && (typeof(dollarReverseArray[5]) !== "undefined")){
       var thousandHundredsPlace = onesObject[dollarReverseArray[5]];
@@ -142,31 +156,36 @@ function checkOverall(){
     }else{
       var thousandHundredsPlaceString = "";
     };
+  
     return thousandHundredsPlaceString+tenThousandString;
-  
-  };
-  
+  };  
   
   //Check millions place [6] tens million[7]
   function tensMillions(){
-     //check tens million
-     if(dollarReverseArray[7] !== "0" && (typeof(dollarReverseArray[7]) !== "undefined")){
-      if(dollarReverseArray[7] == 1){
-        var tenMillionPlace = teenObject[dollarReverseArray[7]];
-        var tenMillionString = `${tenMillionPlace} million `;
-      } else {
-        if(dollarReverseArray[6] !== "0" && (typeof(dollarReverseArray[6]) !== "undefined")){
-          var millionPlace = onesObject[dollarReverseArray[6]];
-          var millionString = `${millionPlace} million `;
-          var tenMillionPlace = tensObject[dollarReverseArray[7]];
-          var tenMillionString = `${tenMillionPlace} `;
-        };
+    //check tens million
+    if(dollarReverseArray[7] !== "0" && (typeof(dollarReverseArray[7]) !== "undefined")){
+     if(dollarReverseArray[7] == 1){
+       var tenMillionPlace = teenObject[dollarReverseArray[7]];
+       var tenMillionString = `${tenMillionPlace} million `;
+     } else {
+       if(dollarReverseArray[6] !== "0" && (typeof(dollarReverseArray[6]) !== "undefined")){
+         var millionPlace = onesObject[dollarReverseArray[6]];
+         var millionString = `${millionPlace} million `;
+         var tenMillionPlace = tensObject[dollarReverseArray[7]];
+         var tenMillionString = `${tenMillionPlace} `;
+       };
+     };
+   }else{
+      if(dollarReverseArray[6] !== "0" && (typeof(dollarReverseArray[6]) !== "undefined")){
+        var millionPlace = onesObject[dollarReverseArray[6]];
+        var millionString = `${millionPlace} million `;
+        var tenMillionString = "";
+      }else{
+        var tenMillionString = "";
+        var millionString = "";
       };
-    }else{
-      var tenMillionString = "";
-      var millionString = "";
-    }
-    return tenMillionString+millionString;
+   };
+   return tenMillionString+millionString;
   };
   
   function hundredMillion(){
@@ -189,14 +208,8 @@ function checkOverall(){
     var resultSection = document.getElementById('answer');
     var resultsText = document.createTextNode(finalHundreds);
     resultSection.appendChild(resultsText);
-  
-    // var resultSection = document.getElementById('answer').innerHTML;
-    // resultSection.appendChild(document.createTextNode("hello"));
-    // document.getElementsByName('answer').value = finalHundreds;
-    console.log(finalHundreds);
    return finalHundreds;
-  
-};
+  };
 
 function resetMyForm(){
   document.getElementById("answer").innerHTML = "";
