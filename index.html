@@ -33,17 +33,18 @@
         <u>Grocery Store</u>
       </div>
       <div id="inputNum">
+          $
           <input type="number" name="numberInput" id="dollarInput" maxlength="12" min="1" step="1" placeholder="Dollar Amount">
           .
           <input type="number" name="numberInput" id="centInput" maxlength="12" min="0" step="1" placeholder="Cents" value="00">
       </div>  
     </section>
 
-    <section id="row3">
+    <form id="row3">
        <div id="answer">
          
        </div>
-    </section>
+      </form>
     
     <section id="row4">
       <div class="addressBox">
@@ -65,5 +66,7 @@
 
   <section>
     <button onclick="checkOverall()">Submit</button>
+    <button onclick="resetMyForm()">Reset</button>
   </section>
+
 </body>

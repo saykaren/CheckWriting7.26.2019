@@ -47,7 +47,6 @@ const tensObject = {
   9: "ninety",
 };
 
-
 //new check overall function
 function checkOverall(){
   var userDollar = document.getElementById("dollarInput").value;
@@ -197,4 +196,8 @@ function checkOverall(){
     console.log(finalHundreds);
    return finalHundreds;
   
+};
+
+function resetMyForm(){
+  document.getElementById("answer").innerHTML = "";
 };
