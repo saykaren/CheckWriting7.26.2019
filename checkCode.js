@@ -10,6 +10,7 @@ Have fun with these and take them step-by-step ensuring to check that everything
 ///////////My data of objects to reference
 const onesObject = {
   //access value by onesObject[key]
+  0: "",
   1: "one",
   2: "two",
   3: "three",
@@ -23,6 +24,7 @@ const onesObject = {
 
 const teenObject = {
   //this is when the tens place is a one which needs to be 
+  0: "ten",
   1: "eleven",
   2: "twelve",
   3: "thirteen",
