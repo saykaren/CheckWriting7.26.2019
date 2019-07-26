@@ -56,12 +56,6 @@ function checkMe(array, arrayNum){
   return results;
 };
 
-
-
-//////////////////testing above 
-
-
-
 //new check overall function
 function checkOverall(){
   var userDollar = document.getElementById("dollarInput").value;
