@@ -124,7 +124,6 @@ function checkOverall(){
   };
    
   function getThousands(){
- 
     //Check ten thousand first to determine thousands place
     if(checkMe(dollarReverseArray, 4)){
       if(dollarReverseArray[4] == 1){

@@ -41,6 +41,9 @@ body{
 
 #row3 {
   border-bottom: 1px solid black;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 37px;
 }
 
 #row5 {
