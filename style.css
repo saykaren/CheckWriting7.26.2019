@@ -12,6 +12,13 @@ body{
 #centInput{
   width: 35px;
 }
+
+#footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
 #memo {
   font-size: 1rem;
 }
@@ -40,6 +47,9 @@ body{
   font-size: 1.5rem;
 }
 
+#saykaren {
+  height: 4rem;
+}
 #signature {
   font-family: Apple Chancery;
   font-style: oblique;
