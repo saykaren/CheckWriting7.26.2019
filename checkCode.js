@@ -48,8 +48,9 @@ const tensObject = {
 };
 
 function checkMe(array, arrayNum){
-  if(array[arrayNum] !== "0" && (typeof(array[arrayNum]) !== "underfined")){
+  if(array[arrayNum] !== "0" && ((array[arrayNum]) !== undefined)){
     var results = true;
+    console.log("I am here");
   }else{
     var results = false;
   };
@@ -137,21 +138,28 @@ function checkOverall(){
     }else{
       if(checkMe(dollarReverseArray, 3)){
         var thousandPlace = onesObject[dollarReverseArray[3]];
-        var tenThousandString = `${thousandPlace} thousand ` 
+        var tenThousandString = `${thousandPlace} thousand `;
+        console.log("here"); 
       }else{
         var tenThousandString = "";
+        console.log("nope here");
       };
     };
-    //Hundreds thousands place is [4]  
+
+    return tenThousandString;
+  };  
+
+  //Check Hundred Thousands Place is [4]
+  function getHundredThousand() {
+//Hundreds thousands place is [4]  
     if(dollarReverseArray[5] !== "0" && (typeof(dollarReverseArray[5]) !== "undefined")){
       var thousandHundredsPlace = onesObject[dollarReverseArray[5]];
       var thousandHundredsPlaceString = `${thousandHundredsPlace} hundred `;
     }else{
       var thousandHundredsPlaceString = "";
     };
-  
-    return thousandHundredsPlaceString+tenThousandString;
-  };  
+  return thousandHundredsPlaceString;
+  };
   
   //Check millions place [6] tens million[7]
   function tensMillions(){
@@ -193,7 +201,7 @@ function checkOverall(){
   
   
   //Report final result
-  var finalResultReport = hundredMillion()+tensMillions()+getThousands()+getHundredsBeyond() + convertTensWord() + calculateCents();
+  var finalResultReport = hundredMillion()+tensMillions()+getHundredThousand()+getThousands()+getHundredsBeyond() + convertTensWord() + calculateCents();
   
     // //Capitalized at first character in the final result 
     var finalHundreds = finalResultReport.charAt(0).toUpperCase()+finalResultReport.slice(1);
