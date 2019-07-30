@@ -50,7 +50,6 @@ const tensObject = {
 function checkMe(array, arrayNum){
   if(array[arrayNum] !== "0" && ((array[arrayNum]) !== undefined)){
     var results = true;
-    console.log("I am here");
   }else{
     var results = false;
   };
@@ -124,7 +123,6 @@ function checkOverall(){
       if(dollarReverseArray[4] == 1){
         var tenThousandPlace = teenObject[dollarReverseArray[3]]; 
         var tenThousandString = `${tenThousandPlace} thousand `;
-        console.log(`ten object ${tenThousandString}`);
       }else{
         if(checkMe(dollarReverseArray, 3)){
           var thousandPlace = onesObject[dollarReverseArray[3]];
@@ -139,10 +137,8 @@ function checkOverall(){
       if(checkMe(dollarReverseArray, 3)){
         var thousandPlace = onesObject[dollarReverseArray[3]];
         var tenThousandString = `${thousandPlace} thousand `;
-        console.log("here"); 
       }else{
         var tenThousandString = "";
-        console.log("nope here");
       };
     };
 
